@@ -1,0 +1,58 @@
+#
+# Copyright (c) 2022 Laird Connectivity
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+menuconfig LOCKING
+	bool "Enable locking module"
+
+if LOCKING
+
+config LOCKING_INIT_PRIORITY
+	int "Init priority Application for locking module"
+	range 0 99
+	default 0
+	help
+	  Recommended to be higher than main thread init priority.
+
+config LOCKING_LOG_LEVEL
+	int "Log level for locking module"
+	range 0 4
+	default 3
+
+config LOCKING_STRING_NAME
+	bool "Enable string name storage/retrieval"
+	default y
+	help
+	  Will allow storage and retrieval of lock names, this will
+	  increase flash usage somewhat.
+
+config LOCKING_VERBOSE_DEBUGGING
+	bool "Enable verbose debugging"
+	help
+	  Will output (via logging) every time a mutex/semaphore is given or
+	  taken (and the status).
+	  Note: likely to produce a lot of debug output.
+
+config LOCKING_SHELL
+	bool "Enable Locking Shell"
+	depends on SHELL
+
+if LOCKING_SHELL
+
+config LOCKING_SHOW_FMT
+        string "Format for the locking show command index name"
+        default "[%03u] %-12s"
+
+config LOCKING_SHELL_MANIPULATION
+	bool "Enable lock manipulation functions"
+	help
+	  Allows shell functions that can be used to manipulate locks (taking,
+	  giving, resetting) in the locking module.
+
+	  Note: This should be used for debugging only, it should not be used
+	        for secure production code.
+
+endif # LOCKING_SHELL
+
+endif # LOCKING

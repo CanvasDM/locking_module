@@ -1,0 +1,35 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "Device Locks",
+    "version": "0.0.1"
+  },
+  "components": {
+    "contentDescriptors": {
+      "deviceParams": {
+        "name": "Device Locks",
+        "schema": {
+          "name": "Device Locks",
+          "type": "array"
+        },
+        "x-device-locks": [
+          {
+            "name": "adc",
+            "summary": "Analog to digital (ADC) converter",
+            "required": true,
+            "x-id": 0,
+            "x-projects": [
+              "BT520",
+              "BT610",
+              "MG100",
+              "BL5340"
+            ],
+            "schema": {
+              "type": "mutex"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
