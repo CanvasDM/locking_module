@@ -90,7 +90,7 @@ bool locking_valid_id(locking_id_t id)
 const char *locking_get_name(locking_id_t id)
 {
 	const char *s = EMPTY_STRING;
-#ifdef CONFIG_ATTR_STRING_NAME
+#ifdef CONFIG_LOCKING_STRING_NAME
 	LOCKING_ENTRY_DECL(id);
 
 	if (entry != NULL) {
