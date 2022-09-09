@@ -47,7 +47,7 @@ zephyr_sources(
 )
 endif()
 
-if(CONFIG_BOARD_BT6)
+if(CONFIG_BOARD_BT610)
 zephyr_include_directories(custom/BT610/include)
 zephyr_sources(
     custom/BT610/source/locking_table.c
